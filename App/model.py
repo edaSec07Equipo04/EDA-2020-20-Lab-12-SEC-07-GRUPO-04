@@ -43,10 +43,66 @@ de creacion y consulta sobre las estructuras de datos.
 # -----------------------------------------------------
 
 # Funciones para agregar informacion al grafo
+def newAnalyzer():
+    try:
+        citibike = {
+                    'graph': None                 
+                    }
+
+        citibike['graph']=gr.newGraph(datastructure='AJD_LIST',
+                                        directed=True,
+                                        size=1000,
+                                        comparefunction=compareStations)   
+        return citibike
+    except Exception as exp:
+        error.reraise(exp,'model:newAnalyzer')
+
+def addTrip(citibike, trip):
+    """
+    """
+    origin = trip['start station id']
+    destination = trip['end station id']
+    duration = int(trip['tripduration'])
+    addStation(citibike,origin)
+    addStation(citibike,destination)
+    addConnection(citibike,origin,destination,duration)
+
+
+def addStation(citibike,stationId):
+    """
+    Adiciona una estación como un vértice del grafo
+    """
+    if not gr.containsVertex(citibike['graph'],stationId):
+        gr.insertVertex(citibike['graph'],stationId)
+    return citibike
+
+def addConnection(citibike,origin,destination,duration):
+    """
+    Adiciona un arco entre dos estaciones
+    """
+    edge = gr.getEdge(citibike['graph'],origin,destination)
+    if edge is None:
+        gr.addEdge(citibike['graph'],origin,destination,duration)
+    return citibike
+
+
 
 # ==============================
 # Funciones de consulta
 # ==============================
+
+def numSCC(graph,sc):
+    """
+    Informa cuántos componentes fuertemente conectados se encontraron
+    """
+    sc = scc.KosarajuSCC(graph)
+    return scc.connectedComponents(sc)
+
+def sameCC(sc,station1,station2):
+    """
+    Informa si dos estaciones están en el mismo componente conectado.
+    """
+    return scc.stronglyConnected(sc,station1,station2)
 
 # ==============================
 # Funciones Helper
@@ -55,3 +111,15 @@ de creacion y consulta sobre las estructuras de datos.
 # ==============================
 # Funciones de Comparacion
 # ==============================
+
+def compareStations(station, keyvaluestation):
+    """
+    Compara dos estaciones
+    """
+    stationId = keyvaluestation['key']
+    if (station == stationId):
+        return 0
+    elif (station > stationId):
+        return 1
+    else:
+        return -1
