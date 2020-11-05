@@ -42,12 +42,178 @@ operación seleccionada.
 # ___________________________________________________
 #  Variables
 # ___________________________________________________
-
+servicefile = ''
+initialStation = None
+recursionLimit = 20000
 
 # ___________________________________________________
 #  Menu principal
 # ___________________________________________________
 
+def printMenu():
+    print("\n")
+    print("************************************************")
+    print("BIENVENIDO")
+    print("1- Inicializar analizador.")
+    print("2- Cargar información de bicicletas.")
+    print("3- Conocer cantidad de cluster de viajes.")
+    print("4- Conocer rutas turísticas circulares.")
+    print("5- Conocer las estaciones críticas.")
+    print("6- Conocer ruta turística por resistencia.")
+    print("7- Recomendador de rutas por rango de edad.")
+    print("8- Rutas de interés turístico.")
+    print("9- Indicación de estaciones para publicidad.")
+    print("10- Conocer las bicicletas para mantenimiento")
+    print("0- SALIR")
+    print("************************************************")
+
+
+
+def optionTwo():
+    print("\nCargando información de uso de bicicletas...")
+    controller.loadServices(cont, servicefile)
+    numedges = controller.totalConnections(cont)
+    numvertex = controller.totalStops(cont)
+    print('Numero de vertices: ' + str(numvertex))
+    print('Numero de arcos: ' + str(numedges))
+    print('El limite de recursion actual: ' + str(sys.getrecursionlimit()))
+    sys.setrecursionlimit(recursionLimit)
+    print('El limite de recursion se ajusta a: ' + str(recursionLimit))
+
+
+'''def optionThree():
+    print('La cantidad de clusters de viajes es: ' +
+          str(controller.connectedComponents(cont)))
+    return -1
+'''
+
+'''def optionFour():
+    controller.minimumCostPaths(cont, initialStation)
+    return -1
+'''
+
+'''def optionFive():
+    haspath = controller.hasPath(cont, destStation)
+    print('Hay camino entre la estación base : ' +
+          'y la estación: ' + destStation + ': ')
+    print(haspath)
+    return -1
+'''
+
+'''def optionSix():
+    path = controller.minimumCostPath(cont, destStation)
+    if path is not None:
+        pathlen = stack.size(path)
+        print('El camino es de longitud: ' + str(pathlen))
+        while (not stack.isEmpty(path)):
+            stop = stack.pop(path)
+            print(stop)
+    else:
+        print('No hay camino')
+    return -1
+'''
+
+'''def optionSeven():
+    maxvert, maxdeg = controller.servedRoutes(cont)
+    print('Estación: ' + maxvert + '  Total rutas servidas: '
+          + str(maxdeg))
+
+    return -1
+'''
+
+
+'''def optionEight():
+    maxvert, maxdeg = controller.servedRoutes(cont)
+    print('Estación: ' + maxvert + '  Total rutas servidas: '
+          + str(maxdeg))
+
+    return -1
+'''
+
+'''def optionNine():
+    maxvert, maxdeg = controller.servedRoutes(cont)
+    print('Estación: ' + maxvert + '  Total rutas servidas: '
+          + str(maxdeg))
+
+    return -1
+'''
+
+'''def optionTen():
+    maxvert, maxdeg = controller.servedRoutes(cont)
+    print('Estación: ' + maxvert + '  Total rutas servidas: '
+          + str(maxdeg))
+
+    return -1
+'''
+
 """
 Menu principal
 """
+
+while True:
+    printMenu()
+    opcion = input('Seleccione una opción para continuar')
+
+    if int(opcion[0])==1:
+        print("\nInicializando...")
+
+        cont = controller.init()
+
+    elif int(input[0])==2:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionTwo, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    elif int(input[0])==3:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionThree, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+    
+    elif int(input[0])==4:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionFour, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    elif int(input[0])==5:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionFive, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    elif int(input[0])==6:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionSix, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    elif int(input[0])==7:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionSeven, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    elif int(input[0])==8:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionEight, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    elif int(input[0])==9:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionNine, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    elif int(input[0])==10:
+
+        #OJO CON TIEMPO DE EJECUCION#
+        tiempoEjecución = timeit.timeit(optionTen, number=1)
+        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+
+    else: 
+        sys.exist(0)
+sys.exit(0)
+        
