@@ -49,7 +49,7 @@ def newAnalyzer():
                     'graph': None                 
                     }
 
-        citibike['graph']=gr.newGraph(datastructure='AJD_LIST',
+        citibike['graph']=gr.newGraph(datastructure='ADJ_LIST',
                                         directed=True,
                                         size=1000,
                                         comparefunction=compareStations)   
@@ -91,7 +91,20 @@ def addConnection(citibike,origin,destination,duration):
 # Funciones de consulta
 # ==============================
 
-def numSCC(graph,sc):
+def totalStops(citibike):
+    """
+    Retorna el total de estaciones (vertices) del grafo
+    """
+    return gr.numVertices(citibike['graph'])
+
+
+def totalConnections(citibike):
+    """
+    Retorna el total arcos del grafo
+    """
+    return gr.numEdges(citibike['graph'])   
+
+def numSCC(graph):
     """
     Informa cuántos componentes fuertemente conectados se encontraron
     """

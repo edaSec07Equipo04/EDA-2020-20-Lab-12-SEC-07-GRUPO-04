@@ -71,7 +71,7 @@ def printMenu():
 
 def optionTwo():
     print("\nCargando información de uso de bicicletas...")
-    controller.loadServices(cont, servicefile)
+    controller.loadTrips(cont)
     numedges = controller.totalConnections(cont)
     numvertex = controller.totalStops(cont)
     print('Numero de vertices: ' + str(numvertex))
@@ -152,68 +152,68 @@ Menu principal
 
 while True:
     printMenu()
-    opcion = input('Seleccione una opción para continuar')
+    opcion = input('Seleccione una opción para continuar: ')
 
     if int(opcion[0])==1:
         print("\nInicializando...")
 
         cont = controller.init()
 
-    elif int(input[0])==2:
+    elif int(opcion[0])==2:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionTwo, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
-    elif int(input[0])==3:
+    elif int(opcion[0])==3:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionThree, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
     
-    elif int(input[0])==4:
+    elif int(opcion[0])==4:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionFour, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
-    elif int(input[0])==5:
+    elif int(opcion[0])==5:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionFive, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
-    elif int(input[0])==6:
+    elif int(opcion[0])==6:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionSix, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
-    elif int(input[0])==7:
+    elif int(opcion[0])==7:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionSeven, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
-    elif int(input[0])==8:
+    elif int(opcion[0])==8:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionEight, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
-    elif int(input[0])==9:
+    elif int(opcion[0])==9:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionNine, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
-    elif int(input[0])==10:
+    elif int(opcion[0])==1 and int(opcion[1])==0:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionTen, number=1)
-        print("El timepo de ejecución de la funnción fue :" + str(tiempoEjecución))
+        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
 
     else: 
-        sys.exist(0)
+        sys.exit(0)
 sys.exit(0)
         

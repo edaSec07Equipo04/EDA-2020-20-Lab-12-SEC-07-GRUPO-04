@@ -43,7 +43,7 @@ recae sobre el controlador.
 
 def init():
 
-    analyzer = model.newAnalizer()
+    analyzer = model.newAnalyzer()
     return analyzer
 
 # ___________________________________________________
@@ -55,8 +55,8 @@ def loadTrips(citibike):
     for filename in os.listdir(cf.data_dir):
         if filename.endswith('.csv'):
             print('Cargando archivo: ' + filename)
-            loadFile(analyzer, filename)
-    return analyzer
+            loadFile(citibike, filename)
+    return citibike
 
 def loadFile(citibike, tripfile):
     """
@@ -76,3 +76,9 @@ def loadFile(citibike, tripfile):
 # ___________________________________________________
 #  Funciones para consultas
 # ___________________________________________________
+
+def totalConnections(citibike):
+    return model.totalConnections(citibike)
+
+def totalStops(citibike):
+    return model.totalStops(citibike)
