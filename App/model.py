@@ -111,10 +111,11 @@ def numSCC(graph):
     sc = scc.KosarajuSCC(graph)
     return scc.connectedComponents(sc)
 
-def sameCC(sc,station1,station2):
+def sameCC(graph,station1,station2):
     """
     Informa si dos estaciones están en el mismo componente conectado.
     """
+    sc = scc.KosarajuSCC(graph)
     return scc.stronglyConnected(sc,station1,station2)
 
 # ==============================

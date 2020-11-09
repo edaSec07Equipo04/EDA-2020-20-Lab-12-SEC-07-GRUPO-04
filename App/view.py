@@ -81,11 +81,21 @@ def optionTwo():
     print('El limite de recursion se ajusta a: ' + str(recursionLimit))
 
 
-'''def optionThree():
+def optionThree():
+    s1=input("Ingrese la estación inicial: ")
+    s2=input("Ingrese la estación final: ")
+    msg = ''
     print('La cantidad de clusters de viajes es: ' +
-          str(controller.connectedComponents(cont)))
+          str(controller.connectedComponents(cont['graph'])))
+    result = controller.sameCC(cont['graph'],s1,s2)
+    if result:
+        msg = ' se encuentran en el mismo cluster.'
+    else:
+        msg = ' no se encuentran en el mismo cluster'
+
+    print("Las estaciones "+s1+ " y " + s2 + msg)
     return -1
-'''
+
 
 '''def optionFour():
     controller.minimumCostPaths(cont, initialStation)
@@ -154,7 +164,7 @@ while True:
     printMenu()
     opcion = input('Seleccione una opción para continuar: ')
 
-    if int(opcion[0])==1:
+    if int(len(opcion)==1) and int(opcion[0])==1:
         print("\nInicializando...")
 
         cont = controller.init()

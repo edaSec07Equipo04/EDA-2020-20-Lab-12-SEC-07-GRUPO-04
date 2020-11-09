@@ -82,3 +82,9 @@ def totalConnections(citibike):
 
 def totalStops(citibike):
     return model.totalStops(citibike)
+
+def connectedComponents(citibike):
+    return model.numSCC(citibike)
+
+def sameCC(citibike,station1,station2):
+    return model.sameCC(citibike,station1,station2)
