@@ -163,55 +163,55 @@ while True:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionTwo, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     elif int(opcion[0])==3:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionThree, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
     
     elif int(opcion[0])==4:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionFour, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     elif int(opcion[0])==5:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionFive, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     elif int(opcion[0])==6:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionSix, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     elif int(opcion[0])==7:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionSeven, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     elif int(opcion[0])==8:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionEight, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     elif int(opcion[0])==9:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionNine, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     elif int(opcion[0])==1 and int(opcion[1])==0:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionTen, number=1)
-        print("El timepo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
 
     else: 
         sys.exit(0)
