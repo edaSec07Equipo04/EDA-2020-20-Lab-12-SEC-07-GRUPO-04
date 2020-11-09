@@ -31,6 +31,7 @@ from DISClib.DataStructures import listiterator as it
 from DISClib.Algorithms.Graphs import scc
 from DISClib.Algorithms.Graphs import dijsktra as djk
 from DISClib.Utils import error as error
+from DISClib.DataStructures import edge as e
 assert config
 
 """
@@ -83,6 +84,8 @@ def addConnection(citibike,origin,destination,duration):
     edge = gr.getEdge(citibike['graph'],origin,destination)
     if edge is None:
         gr.addEdge(citibike['graph'],origin,destination,duration)
+    else:
+        e.updateAverageWeight(edge,duration)
     return citibike
 
 
