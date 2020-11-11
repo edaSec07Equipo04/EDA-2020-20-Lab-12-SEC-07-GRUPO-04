@@ -47,13 +47,15 @@ de creacion y consulta sobre las estructuras de datos.
 def newAnalyzer():
     try:
         citibike = {
-                    'graph': None                 
+                    'graph': None,
+                    'stations': None             
                     }
 
         citibike['graph']=gr.newGraph(datastructure='ADJ_LIST',
                                         directed=True,
                                         size=1000,
-                                        comparefunction=compareStations)   
+                                        comparefunction=compareStations) 
+        citibike['stations']=lt.newList('ARRAY_LIST', compareStations)
         return citibike
     except Exception as exp:
         error.reraise(exp,'model:newAnalyzer')
@@ -61,12 +63,16 @@ def newAnalyzer():
 def addTrip(citibike, trip):
     """
     """
+    lst=citibike['stations']
     origin = trip['start station id']
     destination = trip['end station id']
     duration = int(trip['tripduration'])
     addStation(citibike,origin)
     addStation(citibike,destination)
     addConnection(citibike,origin,destination,duration)
+    lt.addLast(lst,trip)
+
+
 
 
 def addStation(citibike,stationId):
@@ -120,6 +126,9 @@ def sameCC(graph,station1,station2):
     """
     sc = scc.KosarajuSCC(graph)
     return scc.stronglyConnected(sc,station1,station2)
+
+def stationsSize(graph):
+    return lt.size(graph['stations'])
 
 # ==============================
 # Funciones Helper

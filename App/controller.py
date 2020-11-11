@@ -88,3 +88,6 @@ def connectedComponents(citibike):
 
 def sameCC(citibike,station1,station2):
     return model.sameCC(citibike,station1,station2)
+
+def SizeStations(graph):
+    return model.stationsSize(graph)

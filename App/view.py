@@ -74,8 +74,10 @@ def optionTwo():
     controller.loadTrips(cont)
     numedges = controller.totalConnections(cont)
     numvertex = controller.totalStops(cont)
+    size= controller.SizeStations(cont)
     print('Numero de vertices: ' + str(numvertex))
     print('Numero de arcos: ' + str(numedges))
+    print('Viajes cargados: '+ str(size))
     print('El limite de recursion actual: ' + str(sys.getrecursionlimit()))
     sys.setrecursionlimit(recursionLimit)
     print('El limite de recursion se ajusta a: ' + str(recursionLimit))
@@ -173,7 +175,7 @@ while True:
 
         #OJO CON TIEMPO DE EJECUCION#
         tiempoEjecución = timeit.timeit(optionTwo, number=1)
-        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución))
+        print("El tiempo de ejecución de la función fue: " + str(tiempoEjecución)+ ' segundos')
 
     elif int(opcion[0])==3:
 
