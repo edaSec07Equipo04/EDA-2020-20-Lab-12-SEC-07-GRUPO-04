@@ -89,5 +89,9 @@ def totalStops(taxis):
 def connectedComponents(taxis):
     return model.numSCC(taxis)
 
+
+
+def SizeStations(graph):
+    return model.stationsSize(graph)
 def sameCC(taxis,station1,station2):
     return model.sameCC(taxis,station1,station2)
