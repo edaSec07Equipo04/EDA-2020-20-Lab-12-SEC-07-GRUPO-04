@@ -51,22 +51,25 @@ def init():
 #  de datos en los modelos
 # ___________________________________________________
 
-def loadTrips(citibike):
+def loadTrips(taxis):
     for filename in os.listdir(cf.data_dir):
         if filename.endswith('.csv'):
             print('Cargando archivo: ' + filename)
-            loadFile(citibike, filename)
-    return citibike
+            loadFile(taxis, filename)
+    return taxis
 
-def loadFile(citibike, tripfile):
+def loadFile(taxis, tripfile):
     """
     """
     tripfile = cf.data_dir + tripfile
     input_file = csv.DictReader(open(tripfile, encoding="utf-8"),
                                 delimiter=",")
     for trip in input_file:
-        model.addTrip(citibike, trip)
-    return citibike
+        
+        model.addTrip(taxis, trip)
+                    
+    return taxis
+
 
 
 
@@ -77,17 +80,14 @@ def loadFile(citibike, tripfile):
 #  Funciones para consultas
 # ___________________________________________________
 
-def totalConnections(citibike):
-    return model.totalConnections(citibike)
+def totalConnections(taxis):
+    return model.totalConnections(taxis)
 
-def totalStops(citibike):
-    return model.totalStops(citibike)
+def totalStops(taxis):
+    return model.totalStops(taxis)
 
-def connectedComponents(citibike):
-    return model.numSCC(citibike)
+def connectedComponents(taxis):
+    return model.numSCC(taxis)
 
-def sameCC(citibike,station1,station2):
-    return model.sameCC(citibike,station1,station2)
-
-def SizeStations(graph):
-    return model.stationsSize(graph)
+def sameCC(taxis,station1,station2):
+    return model.sameCC(taxis,station1,station2)

@@ -24,6 +24,7 @@
  *
  """
 import config
+import datetime
 from DISClib.ADT.graph import gr
 from DISClib.ADT import map as m
 from DISClib.ADT import list as lt
@@ -46,72 +47,81 @@ de creacion y consulta sobre las estructuras de datos.
 # Funciones para agregar informacion al grafo
 def newAnalyzer():
     try:
-        citibike = {
-                    'graph': None,
-                    'stations': None             
+        taxis = {
+                    'graph': None                 
                     }
 
-        citibike['graph']=gr.newGraph(datastructure='ADJ_LIST',
+        taxis['graph']=gr.newGraph(datastructure='ADJ_LIST',
                                         directed=True,
                                         size=1000,
-                                        comparefunction=compareStations) 
-        citibike['stations']=lt.newList('ARRAY_LIST', compareStations)
-        return citibike
+                                        comparefunction=compareStations)  
+         
+        return taxis
     except Exception as exp:
         error.reraise(exp,'model:newAnalyzer')
 
-def addTrip(citibike, trip):
+def addTrip(taxis, trip):
     """
     """
-    lst=citibike['stations']
-    origin = trip['start station id']
-    destination = trip['end station id']
-    duration = int(trip['tripduration'])
-    addStation(citibike,origin)
-    addStation(citibike,destination)
-    addConnection(citibike,origin,destination,duration)
-    lt.addLast(lst,trip)
+    origin = trip['pickup_community_area']
+    destination = trip['dropoff_community_area']
+    if trip['trip_seconds'] != "":
+        d = float(trip['trip_seconds'])
+        
+        duration = int(d)
+        
+        addStation(taxis,origin)
+        addStation(taxis,destination)
+        addConnection(taxis,origin,destination,duration)
+    else: 
+        None
 
-
-
-
-def addStation(citibike,stationId):
+def addStation(taxis,stationId):
     """
     Adiciona una estación como un vértice del grafo
     """
-    if not gr.containsVertex(citibike['graph'],stationId):
-        gr.insertVertex(citibike['graph'],stationId)
-    return citibike
+    if not gr.containsVertex(taxis['graph'],stationId):
+        gr.insertVertex(taxis['graph'],stationId)
+    return taxis
 
-def addConnection(citibike,origin,destination,duration):
+def addConnection(taxis,origin,destination,duration):
     """
     Adiciona un arco entre dos estaciones
     """
-    edge = gr.getEdge(citibike['graph'],origin,destination)
+    edge = gr.getEdge(taxis['graph'],origin,destination)
     if edge is None:
-        gr.addEdge(citibike['graph'],origin,destination,duration)
+        gr.addEdge(taxis['graph'],origin,destination,duration)
     else:
         e.updateAverageWeight(edge,duration)
-    return citibike
+    return taxis
 
-
+def getDateTimeTaxiTrip(taxitrip):
+    """
+    Recibe la informacion de un servicio de taxi leido del archivo de datos (parametro).
+    Retorna de forma separada la fecha (date) y el tiempo (time) del dato 'trip_start_timestamp'
+    Los datos date se pueden comparar con <, >, <=, >=, ==, !=
+    Los datos time se pueden comparar con <, >, <=, >=, ==, !=
+    """
+    tripstartdate = taxitrip['trip_start_timestamp']
+    taxitripdatetime = datetime.datetime.strptime(tripstartdate, '%Y-%m-%dT%H:%M:%S.%f')
+    return taxitripdatetime.date(), taxitripdatetime.time()
 
 # ==============================
 # Funciones de consulta
 # ==============================
 
-def totalStops(citibike):
+def totalStops(taxis):
     """
     Retorna el total de estaciones (vertices) del grafo
     """
-    return gr.numVertices(citibike['graph'])
+    return gr.numVertices(taxis['graph'])
 
 
-def totalConnections(citibike):
+def totalConnections(taxis):
     """
     Retorna el total arcos del grafo
     """
-    return gr.numEdges(citibike['graph'])   
+    return gr.numEdges(taxis['graph'])   
 
 def numSCC(graph):
     """
@@ -133,6 +143,16 @@ def stationsSize(graph):
 # ==============================
 # Funciones Helper
 # ==============================
+def getDateTimeTaxiTrip(taxitrip):
+    """
+    Recibe la informacion de un servicio de taxi leido del archivo de datos (parametro).
+    Retorna de forma separada la fecha (date) y el tiempo (time) del dato 'trip_start_timestamp'
+    Los datos date se pueden comparar con <, >, <=, >=, ==, !=
+    Los datos time se pueden comparar con <, >, <=, >=, ==, !=
+    """
+    tripstartdate = taxitrip['trip_start_timestamp']
+    taxitripdatetime = datetime.datetime.strptime(tripstartdate, '%Y-%m-%dT%H:%M:%S.%f')
+    return taxitripdatetime.date(), taxitripdatetime.time()
 
 # ==============================
 # Funciones de Comparacion
@@ -149,3 +169,8 @@ def compareStations(station, keyvaluestation):
         return 1
     else:
         return -1
+
+
+
+
+

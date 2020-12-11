@@ -81,7 +81,7 @@ def optionTwo():
     print('El limite de recursion actual: ' + str(sys.getrecursionlimit()))
     sys.setrecursionlimit(recursionLimit)
     print('El limite de recursion se ajusta a: ' + str(recursionLimit))
-
+    print(cont)
 
 def optionThree():
     s1=input("Ingrese la estación inicial: ")
@@ -99,64 +99,7 @@ def optionThree():
     return -1
 
 
-'''def optionFour():
-    controller.minimumCostPaths(cont, initialStation)
-    return -1
-'''
 
-'''def optionFive():
-    haspath = controller.hasPath(cont, destStation)
-    print('Hay camino entre la estación base : ' +
-          'y la estación: ' + destStation + ': ')
-    print(haspath)
-    return -1
-'''
-
-'''def optionSix():
-    path = controller.minimumCostPath(cont, destStation)
-    if path is not None:
-        pathlen = stack.size(path)
-        print('El camino es de longitud: ' + str(pathlen))
-        while (not stack.isEmpty(path)):
-            stop = stack.pop(path)
-            print(stop)
-    else:
-        print('No hay camino')
-    return -1
-'''
-
-'''def optionSeven():
-    maxvert, maxdeg = controller.servedRoutes(cont)
-    print('Estación: ' + maxvert + '  Total rutas servidas: '
-          + str(maxdeg))
-
-    return -1
-'''
-
-
-'''def optionEight():
-    maxvert, maxdeg = controller.servedRoutes(cont)
-    print('Estación: ' + maxvert + '  Total rutas servidas: '
-          + str(maxdeg))
-
-    return -1
-'''
-
-'''def optionNine():
-    maxvert, maxdeg = controller.servedRoutes(cont)
-    print('Estación: ' + maxvert + '  Total rutas servidas: '
-          + str(maxdeg))
-
-    return -1
-'''
-
-'''def optionTen():
-    maxvert, maxdeg = controller.servedRoutes(cont)
-    print('Estación: ' + maxvert + '  Total rutas servidas: '
-          + str(maxdeg))
-
-    return -1
-'''
 
 """
 Menu principal
