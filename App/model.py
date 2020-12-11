@@ -63,19 +63,28 @@ def newAnalyzer():
 def addTrip(taxis, trip):
     """
     """
+    
     origin = trip['pickup_community_area']
     destination = trip['dropoff_community_area']
-    if trip['trip_seconds'] != "":
-        d = float(trip['trip_seconds'])
-        
-        duration = int(d)
-        
-        addStation(taxis,origin)
-        addStation(taxis,destination)
-        addConnection(taxis,origin,destination,duration)
-    else: 
-        None
-
+    if origin != destination:        
+        if trip['trip_seconds'] != "":
+            if origin != None and destination != None:
+                if origin != "" and destination != "":
+                    d = float(trip['trip_seconds'])
+                    
+                    duration = int(d)
+                    
+                    addStation(taxis,origin)
+                    addStation(taxis,destination)
+                    addConnection(taxis,origin,destination,duration)
+                else:
+                    pass
+            else:
+                pass
+        else: 
+            pass
+    else:
+        pass
 def addStation(taxis,stationId):
     """
     Adiciona una estación como un vértice del grafo
@@ -169,6 +178,14 @@ def compareStations(station, keyvaluestation):
     else:
         return -1
 
+
+#************************************
+#FUNCIONES DE CONSULTA
+#************************************
+
+
+
+    
 
 
 
