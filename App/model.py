@@ -139,7 +139,6 @@ def sameCC(graph,station1,station2):
 
 def stationsSize(graph):
     return lt.size(graph['stations'])
-
 # ==============================
 # Funciones Helper
 # ==============================
