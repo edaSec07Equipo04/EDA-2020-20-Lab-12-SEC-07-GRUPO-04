@@ -137,6 +137,8 @@ def sameCC(graph,station1,station2):
     sc = scc.KosarajuSCC(graph)
     return scc.stronglyConnected(sc,station1,station2)
 
+def stationsSize(graph):
+    return lt.size(graph['stations'])
 # ==============================
 # Funciones Helper
 # ==============================
